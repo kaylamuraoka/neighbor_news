@@ -7,7 +7,7 @@ class Home extends Component {
     return (
       <>
         <Banner
-          backgroundImage="https://strictlyforkidsstore.com/assets/images/lltlc144.jpg"
+          backgroundImage="https://i.pinimg.com/564x/87/f5/0a/87f50a74c7fe20e185045d65492a9052.jpg"
           title="Welcome"
           subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
           neque consequuntur"
