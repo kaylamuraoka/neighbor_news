@@ -15,8 +15,11 @@ function Banner(props) {
         <p>{props.subtitle}</p>
         <br />
 
-        <Link to={props.buttonRoute}>
-          <button>{props.buttonText} </button>
+        <Link to="/login">
+          <button>Login </button>
+        </Link>
+        <Link to="/register">
+          <button>Register</button>
         </Link>
       </div>
     </div>

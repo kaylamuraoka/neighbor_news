@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Chewy&family=Montserrat&display=swap");
 
 .banner-image {
-  height: 500px;
+  height: 400px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -40,6 +40,7 @@
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  margin: 15px;
 }
 
 .banner-text button:hover {
