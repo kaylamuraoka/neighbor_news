@@ -1,17 +1,21 @@
 const router= require('express').Router();
 const { 
-    test,
-    getAll,
+    blogTest,
+    blogGetAll,
     postBlog,
-    findOne,
-    deleteOne,
-    updateOne, 
+    blogFindOne,
+    blogDeleteOne,
+    blogUpdateOne, 
 } = require("../controllers/newsController")
 
-router.route("/test").get(test)
+router.route("/test").delete(blogTest)
 
-router.route("/").get(getAll).post(postBlog);
+router.route("/blog").get(blogGetAll).post(postBlog);
 
-router.route("/:id").get(findOne).delete(deleteOne).patch(updateOne);
+// router.route("/blog/:id").get(blogFindOne).patch(blogUpdateOne).delete(blogDeleteOne);
+
+router.route("/blog/:id").get(function(req,res) {
+    res.send(req.params.id)
+});
 
 module.exports = router;

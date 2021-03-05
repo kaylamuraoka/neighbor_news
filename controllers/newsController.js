@@ -1,11 +1,13 @@
 const Blog = require("../models/blogSchema")
+const mongojs = require("mongojs");
+const { mongo } = require("mongoose");
 
 module.exports = {
-    test: function (req, res) {
-        res.send({msg: "success"});
+    blogTest: function (req, res) {
+        res.send({msg: "hit delete route"});
     },
 
-    getAll: async (req, res) => {
+    blogGetAll: async (req, res) => {
         try {
           const allBlogs = await Blog.find();
           res.json(allBlogs);
@@ -14,7 +16,7 @@ module.exports = {
         }
     },
     
-    findOne: async (req, res) => {
+    blogFindOne: async (req, res) => {
         try {
             const foundBlogPost = await Blog.findById(req.params.id);
             res.send(foundBlogPost);
@@ -38,7 +40,7 @@ module.exports = {
         }
     },
 
-    deleteOne: async (req, res) => {
+    blogDeleteOne: async (req, res) => {
         try {
             res.json(await Blog.findByIdAndDelete(req.params.id));
         } catch (err) {
@@ -46,9 +48,10 @@ module.exports = {
         }
     },
 
-    updateOne: async (req, res) => {
+    blogUpdateOne: async (req, res) => {
         try {
-            const foundBlogPost = await Blog.findById(req.params.id);
+            const id = {_id: mongojs.ObjectId(req.params.id)}
+            const foundBlogPost = await Blog.collection.findOneAndUpdate(id);
             const { title, text, category } = req.body;
 
             if (title) foundBlogPost.title = title;

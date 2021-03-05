@@ -23,7 +23,7 @@ const apiRoutes = require("./routes/apiRoutes")
 const htmlRoutes = require("./routes/htmlRoutes")
 
 // app.use("/", htmlRoutes);
-app.use("/api", apiRoutes);
+app.use("/", apiRoutes);
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
