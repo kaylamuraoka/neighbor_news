@@ -5,6 +5,9 @@ import Wrapper from "./components/Wrapper";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import ProductListings from "./pages/ProductListings";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Messages from "./pages/Messages";
 
 function App() {
   return (
@@ -13,6 +16,9 @@ function App() {
       <Wrapper>
         <Route exact path="/" component={Home} />
         <Route exact path="/product-listings" component={ProductListings} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/messages" component={Messages} />
       </Wrapper>
       <Footer />
     </Router>
