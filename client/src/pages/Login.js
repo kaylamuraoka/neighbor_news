@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import Container from "../components/Container";
 
 class Login extends Component {
   render() {
     return (
-      <div>
+      <Container>
         <h1>This is the Login Page</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam neque
@@ -11,7 +12,7 @@ class Login extends Component {
           dolorum a, iste nemo delectus maiores minus! Consequuntur quaerat
           excepturi asperiores!
         </p>
-      </div>
+      </Container>
     );
   }
 }

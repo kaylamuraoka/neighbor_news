@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import Container from "./../components/Container";
 
 class Register extends Component {
   render() {
     return (
-      <div>
+      <Container>
         <h1>
           This is the Registration Page so a user can create a new account
         </h1>
@@ -13,7 +14,7 @@ class Register extends Component {
           dolorum a, iste nemo delectus maiores minus! Consequuntur quaerat
           excepturi asperiores!
         </p>
-      </div>
+      </Container>
     );
   }
 }

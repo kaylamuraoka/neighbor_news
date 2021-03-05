@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import Container from "./../components/Container";
 
 class Messages extends Component {
   render() {
     return (
-      <div>
+      <Container>
         <h1>This is the Messages Page</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam neque
@@ -11,7 +12,7 @@ class Messages extends Component {
           dolorum a, iste nemo delectus maiores minus! Consequuntur quaerat
           excepturi asperiores!
         </p>
-      </div>
+      </Container>
     );
   }
 }
