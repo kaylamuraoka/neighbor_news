@@ -1,6 +1,17 @@
 const router= require('express').Router();
-const { news } = require("../controllers/newsController")
+const { 
+    test,
+    getAll,
+    postBlog,
+    findOne,
+    deleteOne,
+    updateOne, 
+} = require("../controllers/newsController")
 
-router.get("/test", news)
+router.route("/test").get(test)
+
+router.route("/").get(getAll).post(postBlog);
+
+router.route("/:id").get(findOne).delete(deleteOne).patch(updateOne);
 
 module.exports = router;
