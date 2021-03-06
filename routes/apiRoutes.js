@@ -19,7 +19,7 @@ router.route("/blog/:id").get(function(req,res) {
 });
 
 
-router.post('/product-listings', async (req, res) => {
+router.post('/upload', async (req, res) => {
     try {
       const newImage = new Image({
         imageUrl: req.body.imageUrl

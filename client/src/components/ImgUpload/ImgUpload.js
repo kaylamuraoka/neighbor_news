@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-const url = "https://api.cloudinary.com/v1_1/dkpdbkahw/image/upload";
-const preset = "your Upload presets";
 
 const User = () => {
+  const url = "https://api.cloudinary.com/v1_1/dkpdbkahw/image/upload ";
+  const preset = "https://api.cloudinary.com/v1_1/dkpdbkahw/image/upload";
   const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
   const onChange = (e) => {
@@ -18,7 +18,7 @@ const User = () => {
       setLoading(true);
       const res = await axios.post(url, formData);
       const imageUrl = res.data.secure_url;
-      const image = await axios.post("http://localhost:3000/product-listings", {
+      const image = await axios.post("http://localhost:3000/upload", {
         imageUrl,
       });
       setLoading(false);
