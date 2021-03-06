@@ -18,4 +18,23 @@ router.route("/blog/:id").get(function(req,res) {
     res.send(req.params.id)
 });
 
+
+router.post('/product-listings', async (req, res) => {
+    try {
+      const newImage = new Image({
+        imageUrl: req.body.imageUrl
+      });
+      await newImage.save();
+      res.json(newImage.imageUrl);
+    } catch (err) {
+      console.error('Something went wrong', err);
+    }
+  });
+  ​
+  router.get('/product-listings', async (req, res) => {
+    const getImage = await Image.findOne().sort({ _id: -1 });
+    res.json(getImage.imageUrl);
+  });
+
+
 module.exports = router;
