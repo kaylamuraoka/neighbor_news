@@ -9,13 +9,6 @@ const ImageSchema = new Schema({
     },
 });
 
-const User = mongoose.model("user", UserSchema);
+const Image = mongoose.model("image", UserSchema);
 ​
-const Image = mongoose.model(
-  "image",
-  mongoose.Schema({
-    imageUrl: String,
-  })
-);
-
 module.exports = Image;
