@@ -1,4 +1,5 @@
 const router= require('express').Router();
+const Blog = require("../models/blogSchema")
 const { 
     blogTest,
     blogGetAll,
@@ -10,13 +11,9 @@ const {
 
 router.route("/test").delete(blogTest)
 
-router.route("/blog").get(blogGetAll).post(postBlog);
+router.route("/blog/").get(blogGetAll).post(postBlog);
 
 router.route("/blog/:id").get(blogFindOne).patch(blogUpdateOne).delete(blogDeleteOne);
-
-// router.route("/blog/:id").get(function(req,res) {
-//     res.send(req.params.id)
-// });
 
 
 // router.post('/upload', async (req, res) => {
