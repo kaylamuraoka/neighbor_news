@@ -1,27 +1,10 @@
-// import React, { Component } from "react";
-// import Container from "../components/Container";
-// import ImgUpload from "../components/Upload/ImgUpload";
-// class ProductListings extends Component {
-//   render() {
-//     return (
-//       <Container>
-//         <ImgUpload />
-//       </Container>
-//     );
-//   }
-// }
-
-// export default ProductListings;
-
 import React, { useState } from "react";
-import Alert from "../components/Alert/Alert";
 
 export default function Upload() {
   const [fileInputState, setFileInputState] = useState("");
   const [previewSource, setPreviewSource] = useState("");
   const [selectedFile, setSelectedFile] = useState();
-  const [successMsg, setSuccessMsg] = useState("");
-  const [errMsg, setErrMsg] = useState("");
+
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
     previewFile(file);
@@ -46,8 +29,7 @@ export default function Upload() {
       uploadImage(reader.result);
     };
     reader.onerror = () => {
-      console.error("AHHHHHHHH!!");
-      setErrMsg("something went wrong!");
+      console.error("Error");
     };
   };
 
@@ -60,17 +42,14 @@ export default function Upload() {
       });
       setFileInputState("");
       setPreviewSource("");
-      setSuccessMsg("Image uploaded successfully");
     } catch (err) {
       console.error(err);
-      setErrMsg("Something went wrong!");
     }
   };
   return (
     <div>
       <h1 className="title">Upload an Image</h1>
-      <Alert msg={errMsg} type="danger" />
-      <Alert msg={successMsg} type="success" />
+
       <form onSubmit={handleSubmitFile} className="form">
         <input
           id="fileInput"
