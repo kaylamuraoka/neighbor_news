@@ -3,11 +3,13 @@ const session = require("express-session");
 const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 8080;
+const cors = require("cors");
+const mongoose = require("mongoose");
 
 // setup express
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.use(express.json());
 // Set up static files
 app.use(express.static("public"));
 
