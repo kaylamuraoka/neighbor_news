@@ -13,26 +13,6 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.static("public"));
 app.use(cors());
 
-// setup mongoose
-// require("./models/connection");
-
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("client/build"));
-// }
-
-// setup routes
-// const apiRoutes = require("./routes/apiRoutes");
-// const htmlRoutes = require("./routes/htmlRoutes");
-
-// app.use("/", htmlRoutes);
-// app.use("/", apiRoutes);
-
-// app.get("*", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "client", "public", "index.html"));
-// });
-
-// Cant run these codes unless commented out
-
 app.get("/api/images", async (req, res) => {
   const { resources } = await cloudinary.search
     .expression()
@@ -55,6 +35,24 @@ app.post("/api/upload", async (req, res) => {
     console.error(err);
     res.status(500).json({ err: "Something went wrong" });
   }
+});
+
+// setup mongoose
+require("./models/connection");
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
+// setup routes
+const apiRoutes = require("./routes/apiRoutes");
+const htmlRoutes = require("./routes/htmlRoutes");
+
+app.use("/", htmlRoutes);
+app.use("/", apiRoutes);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "public", "index.html"));
 });
 
 const PORT = process.env.PORT || 8080;
