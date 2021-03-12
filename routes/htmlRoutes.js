@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = (app) => {
-  app.get("/exercise", (req, res) => {
+  app.get("/product-listings", (req, res) => {
     console.log(req);
     res.sendFile(path.join(""));
   });
