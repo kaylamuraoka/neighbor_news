@@ -3,6 +3,7 @@ const session = require("express-session");
 const app = express();
 const path = require("path");
 const cors = require("cors");
+const mongoose = require("mongoose");
 const { cloudinary } = require("./utils/cloudinary");
 
 // setup express
