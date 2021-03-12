@@ -50,9 +50,10 @@ module.exports = {
 
     blogUpdateOne: async (req, res) => {
         try {
-            const id = {_id: mongojs.ObjectId(req.params.id)}
-            const foundBlogPost = await Blog.collection.findOneAndUpdate(id);
+            const foundBlogPost = await Blog.findById(req.params.id);
             const { title, text, category } = req.body;
+
+            console.log(req.body)
 
             if (title) foundBlogPost.title = title;
             if (text) foundBlogPost.text = text;
