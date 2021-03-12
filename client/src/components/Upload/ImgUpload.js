@@ -48,7 +48,7 @@ const ImgUpload = () => {
   };
   return (
     <div>
-      <h1 className="title">Upload an Image</h1>
+      <h1 className="title">Upload Product</h1>
 
       <form onSubmit={handleSubmitFile} className="form">
         <input
