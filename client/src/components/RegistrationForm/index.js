@@ -20,7 +20,6 @@ function RegistrationForm() {
     e.preventDefault();
 
     try {
-      console.log(form)
       await axios.post("/users/register", form);
       history.push("/");
     } catch (err) {
