@@ -1,12 +1,32 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Container from "./../Container";
+import axios from "axios";
+import {useHistory} from "react-router-dom";
 import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faCamera } from "@fortawesome/free-solid-svg-icons";
 const imgPath = process.env.PUBLIC_URL + "/img/";
 
 function RegistrationForm() {
+  const [form, setForm] = useState();
+  const history = useHistory();
   const profileImgInput = useRef(null);
+
+  const onChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const submit = async (e) => {
+    e.preventDefault();
+
+    try {
+      console.log(form)
+      await axios.post("/users/register", form);
+      history.push("/");
+    } catch (err) {
+      console.log(err.response);
+    }
+  };
 
   return (
     <Container>
@@ -17,6 +37,7 @@ function RegistrationForm() {
           className="signup pt-1"
           method="POST"
           enctype="multipart/form-data"
+          onSubmit={submit}
         >
           {/* Upload Image Section */}
           <div className="d-flex justify-content-center">
@@ -50,7 +71,7 @@ function RegistrationForm() {
 
           {/* Name input */}
           <div className="form-row">
-            <div className="form-group col-6">
+            <div className="form-group col-4">
               <label for="firstName-input">First Name</label>
               <input
                 type="text"
@@ -58,10 +79,12 @@ function RegistrationForm() {
                 placeholder="First name"
                 id="firstName-input"
                 required
+                onChange={onChange}
+                name='firstName'
               />
               <small id="first-name-validation" className="form-text"></small>
             </div>
-            <div className="form-group col-6">
+            <div className="form-group col-4">
               <label for="lastName-input">Last Name</label>
               <input
                 type="text"
@@ -69,6 +92,21 @@ function RegistrationForm() {
                 placeholder="Last name"
                 id="lastName-input"
                 required
+                onChange={onChange}
+                name='lastName'
+              />
+              <small id="last-name-validation" className="form-text"></small>
+            </div>
+            <div className="form-group col-4">
+              <label for="lastName-input">Username</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Username"
+                id="displayName-input"
+                required
+                onChange={onChange}
+                name='displayName'
               />
               <small id="last-name-validation" className="form-text"></small>
             </div>
@@ -83,6 +121,8 @@ function RegistrationForm() {
                 id="email-input"
                 placeholder="Email Address"
                 required
+                onChange={onChange}
+                name='email'
               />
               <small id="email-validation" className="form-text"></small>
             </div>
@@ -96,6 +136,8 @@ function RegistrationForm() {
                 pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
                 placeholder="Phone Number"
                 required
+                onChange={onChange}
+                name='phoneNumber'
               />
               <small id="phone-validation" className="form-text"></small>
             </div>
@@ -110,6 +152,8 @@ function RegistrationForm() {
               id="street-address-input"
               placeholder="Street Address"
               required
+              onChange={onChange}
+              name='streetAddress'
             />
           </div>
           <div className="form-row">
@@ -122,6 +166,8 @@ function RegistrationForm() {
                 id="city-input"
                 placeholder="City"
                 required
+                onChange={onChange}
+                name='city'
               />
             </div>
 
@@ -134,6 +180,8 @@ function RegistrationForm() {
                 id="state-input"
                 placeholder="State"
                 required
+                onChange={onChange}
+                name="state"
               />
             </div>
 
@@ -146,6 +194,8 @@ function RegistrationForm() {
                 id="zipcode-input"
                 placeholder="Zipcode"
                 required
+                onChange={onChange}
+                name="zipCode"
               />
             </div>
 
@@ -158,6 +208,8 @@ function RegistrationForm() {
                 id="country-input"
                 placeholder="Country"
                 required
+                onChange={onChange}
+                name="country"
               />
             </div>
           </div>
@@ -171,6 +223,8 @@ function RegistrationForm() {
               id="password-input"
               placeholder="Password"
               required
+              onChange={onChange}
+              name="password"
             />
             {/* Strong Password Validation */}
             <small id="pwd-validation" className="form-text text-muted">
@@ -187,6 +241,8 @@ function RegistrationForm() {
               id="confirm-password-input"
               placeholder="Confirm Password"
               required
+              onChange={onChange}
+              name="passwordCheck"
             />
             <small id="confirm-pwd-validation" className="form-text"></small>
           </div>
@@ -198,7 +254,7 @@ function RegistrationForm() {
           </span>
           <br />
           <br />
-          <button type="submit" className="btn btn-default">
+          <button className="btn btn-default btn-primary">
             Submit
           </button>
         </form>
