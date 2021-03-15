@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Wrapper from "./components/Wrapper";
@@ -10,7 +10,10 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Messages from "./pages/Messages";
 import ProductListing from "./pages/ProductListing";
+import Account from "./pages/Account"
+import NoMatch from "./pages/Nomatch"
 import API from "./utils/API"
+import UserContext from "./context/UserContext";
 
 function App() {
   const [userData, setUserData] = useState({
@@ -19,7 +22,7 @@ function App() {
   });
 
   const checkLoggedIn = async () => {
-    let token = localStorage.getItem("auth-token");
+    let token = await localStorage.getItem("auth-token");
 
     if (token === null) {
       localStorage.setItem("auth-token", "");
@@ -59,12 +62,20 @@ function App() {
             />
         }
       <Wrapper>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/upload" component={Uploads} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/messages" component={Messages} />
-        <Route exact path="/productlist" component={ProductListing} />
+        <UserContext.Provider value={{ userData, setUserData}}>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/upload" component={Uploads} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/messages" component={Messages} />
+            <Route exact path="/productlist" component={ProductListing} />
+            <Route exact path="/account" component={Account} />
+            <Route>
+              <NoMatch />
+            </Route>
+          </Switch>
+        </UserContext.Provider>
       </Wrapper>
       <Footer />
     </Router>

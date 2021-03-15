@@ -12,10 +12,20 @@ export default {
     return axios.post("/register", { token: token });
   },
   // Delete users
-  deleteUser: function() {
+  deleteUser: function(token) {
     return axios.delete("/users", {
-      headers: { "x-auth-token": localStorage.getItem("auth-token") },
+      headers: { "x-auth-token": token },
     });
+  },
+  // Delete token
+  deleteConfirm: function(token) {
+    return axios.delete("/confirm", {
+      headers: { "x-auth-token": token },
+    });
+  },
+  // login user
+  loginUser: function(form) {
+    return axios.post("users/login", form)
   },
   // Gets all posts
   getPosts: function() {

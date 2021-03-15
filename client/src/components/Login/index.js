@@ -1,7 +1,7 @@
 import React, { useRef, useState, useContext, useEffect } from "react";
 import UserContext from "../../context/UserContext.js"
 import Container from "./../Container";
-import axios from "axios";
+import API from "../../utils/API"
 import {useHistory} from "react-router-dom";
 
 function LoginPage() {
@@ -16,7 +16,7 @@ function LoginPage() {
   const submitLoginForm = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("/users/login", form);
+      const { data } = await API.loginUser(form);
       console.log(data)
       setUserData({
         token: data.token,

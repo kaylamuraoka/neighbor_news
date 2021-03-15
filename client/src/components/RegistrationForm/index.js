@@ -22,8 +22,10 @@ function RegistrationForm() {
     try {
       await axios.post("/users/register", form);
       history.push("/");
+      window.location.reload(false)
     } catch (err) {
       console.log(err.response);
+      alert(err.response.data.msg)
     }
   };
 
