@@ -24,7 +24,8 @@ function LoginPage() {
       });
 
       localStorage.setItem("auth-token", data.token);
-      history.push("/");
+      await history.push("/");
+      window.location.reload(false)
     } catch (err) {
       console.log(err.response);
       alert(err.response.data.msg)

@@ -1,6 +1,22 @@
 import axios from "axios";
 
 export default {
+  // Gets user login
+  getUser: function(token) {
+    return axios.get("/users", {
+      headers: { "x-auth-token": token },
+    });
+  },
+  // Register users
+  registerUser: function(token) {
+    return axios.post("/register", { token: token });
+  },
+  // Delete users
+  deleteUser: function() {
+    return axios.delete("/users", {
+      headers: { "x-auth-token": localStorage.getItem("auth-token") },
+    });
+  },
   // Gets all posts
   getPosts: function() {
     return axios.get("/api/posts");
