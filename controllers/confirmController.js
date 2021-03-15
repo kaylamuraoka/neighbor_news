@@ -18,4 +18,12 @@ module.exports = {
       res.send(err);
     }
   },
+  deleteUserConfirm: async (req, res) => {
+    try {
+      const deletedConfirm = await Confirm.deleteOne({ authorId: req.user});
+      res.json(deletedConfirm)
+    } catch (err) {
+      res.send({ error: err });
+    }
+  }, 
 };

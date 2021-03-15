@@ -139,10 +139,11 @@ module.exports = {
     }
   },
 
-  deleteUser: async (req, res) => {
+  deleteUser: async (req, res, next) => {
     try {
       const deletedUser = await User.findByIdAndDelete(req.user);
       res.json(deletedUser);
+      next();
     } catch (err) {
       res.send({ error: err });
     }
