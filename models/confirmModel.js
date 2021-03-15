@@ -11,4 +11,6 @@ const confirmSchema = new mongoose.Schema({
   },
 });
 
-module.exports = Confirm = mongoose.model("confirm", confirmSchema);
+const Confirm = mongoose.model("confirm", confirmSchema);
+
+module.exports = Confirm
