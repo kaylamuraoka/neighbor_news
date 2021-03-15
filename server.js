@@ -47,9 +47,13 @@ if (process.env.NODE_ENV === "production") {
 // setup routes
 const apiRoutes = require("./routes/apiRoutes");
 const htmlRoutes = require("./routes/htmlRoutes");
+const userRoutes = require("./routes/userRoutes");
+const confirmRoutes = require("./routes/confirmRoutes");
 
-app.use("/", htmlRoutes);
+// app.use("/", htmlRoutes);
 app.use("/", apiRoutes);
+app.use("/users", userRoutes);
+app.use("/confirm", confirmRoutes);
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "public", "index.html"));

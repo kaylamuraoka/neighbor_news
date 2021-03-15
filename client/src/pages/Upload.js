@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Container from "../components/Container";
 
 export default function Upload() {
   const [fileInputState, setFileInputState] = useState("");
@@ -47,25 +48,50 @@ export default function Upload() {
     }
   };
   return (
-    <div>
-      <h1 className="title">Upload an Image</h1>
-
-      <form onSubmit={handleSubmitFile} className="form">
-        <input
-          id="fileInput"
-          type="file"
-          name="image"
-          onChange={handleFileInputChange}
-          value={fileInputState}
-          className="form-input"
-        />
-        <button className="btn" type="submit">
-          Submit
-        </button>
-      </form>
-      {previewSource && (
-        <img src={previewSource} alt="chosen" style={{ height: "300px" }} />
-      )}
-    </div>
+    <Container>
+      <div>
+        <h1 className="title">Upload Product</h1>
+        {previewSource && (
+          <img src={previewSource} alt="chosen" style={{ height: "300px" }} />
+        )}
+        <br></br>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" className="form-label">
+            Title
+          </label>
+          <input
+            type="email"
+            className="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Enter Product Name"
+          />
+        </div>
+        <div className="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">
+            Description
+          </label>
+          <textarea
+            className="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            placeholder="Enter Product Description"
+          ></textarea>
+        </div>
+        <form className="col-md-8" onSubmit={handleSubmitFile} className="form">
+          <label>Upload Image</label>
+          <input
+            id="imgId"
+            type="file"
+            name="image"
+            onChange={handleFileInputChange}
+            value={fileInputState}
+            className="form-control"
+          />
+          <button className="btn btn-primary" type="submit">
+            Upload
+          </button>
+        </form>
+      </div>
+    </Container>
   );
 }
