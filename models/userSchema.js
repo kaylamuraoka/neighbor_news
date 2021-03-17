@@ -20,10 +20,21 @@ const UserSchema = new Schema({
         required: true 
     },
 
+    firstName: {
+        type: String,
+        required: true
+    },
+
+    lastName: {
+        type: String,
+        required: true
+    },
+
     zipCode: {
         type: Number, 
         required: true 
     },
+    confirmed: { type: Boolean, default: false}
 });
 
 const User = mongoose.model("user", UserSchema);
