@@ -1,10 +1,49 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import UserContext from "../context/UserContext";
 import Container from "../components/Container";
+import API from "../utils/API"
+import {useHistory} from "react-router-dom";
 
 export default function Upload() {
+  const { userData } = useContext(UserContext);
   const [fileInputState, setFileInputState] = useState("");
   const [previewSource, setPreviewSource] = useState("");
   const [selectedFile, setSelectedFile] = useState();
+  const [form, setForm] = useState();
+  const [postData, setPostData] = useState();
+  const history = useHistory();
+
+  // This is used to set the form state with what needs to be posted to the database
+  const onChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    blogDataChange()
+  };
+
+  // Creating one datasource to upload data to the database.
+  const blogDataChange = () => {
+    setPostData({ 
+      ...form,
+      userId: userData.user.id,
+      displayName: userData.user.displayName,
+      zipCode: userData.user.zipCode
+    })
+  };
+
+  // Posting to the database
+  const postSubmit = async(url) => {
+    let blogPost = {
+      ...postData,
+      ...url
+    }
+    console.log(blogPost)
+    try {
+      await API.savePost(blogPost);
+      history.push("/productlist")
+    } catch (err) {
+      console.log(err.response)
+      alert(err.response.data.msg)
+    }
+  }
 
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
@@ -21,7 +60,7 @@ export default function Upload() {
     };
   };
 
-  const handleSubmitFile = (e) => {
+  const handleSubmitFile = async (e) => {
     e.preventDefault();
     if (!selectedFile) return;
     const reader = new FileReader();
@@ -40,12 +79,20 @@ export default function Upload() {
         method: "POST",
         body: JSON.stringify({ data: base64EncodedImage }),
         headers: { "Content-Type": "application/json" },
-      });
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        let url = {imgUrl: data.url}
+        console.log(url)
+        postSubmit(url)
+      })
       setFileInputState("");
       setPreviewSource("");
     } catch (err) {
       console.error(err);
     }
+    
   };
   return (
     <Container>
@@ -63,6 +110,8 @@ export default function Upload() {
             type="email"
             className="form-control"
             id="exampleFormControlInput1"
+            onChange={onChange}
+            name="title"
             placeholder="Enter Product Name"
           />
         </div>
@@ -74,8 +123,24 @@ export default function Upload() {
             className="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
+            onChange={onChange}
+            name="text"
             placeholder="Enter Product Description"
           ></textarea>
+        </div>
+        <div className="mb-3">
+          <label for="exampleFormControlPricearea1" class="form-label">
+            Price
+          </label>
+          <input
+            type="number"
+            className="form-control"
+            id="exampleFormControlPricearea1"
+            rows="3"
+            onChange={onChange}
+            name="price"
+            placeholder="Enter a Price"
+          ></input>
         </div>
         <form className="col-md-8" onSubmit={handleSubmitFile} className="form">
           <label>Upload Image</label>
