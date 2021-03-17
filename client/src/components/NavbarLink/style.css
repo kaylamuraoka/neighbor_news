@@ -13,7 +13,17 @@ nav.topnav a:hover {
   font-size: 18px;
 }
 
+nav.topnav a:hover > svg {
+  font-size: 19px;
+}
+
 nav.topnav a.active {
   color: white;
   border-bottom: 3px solid red;
+}
+
+nav svg {
+  margin-right: 8px;
+  font-size: 17px;
+  margin-top: -6px;
 }
