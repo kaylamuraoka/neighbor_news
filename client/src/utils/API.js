@@ -25,7 +25,7 @@ export default {
   },
   // login user
   loginUser: function(form) {
-    return axios.post("users/login", form)
+    return axios.post("/users/login", form)
   },
   // Gets all posts
   getPosts: function() {
