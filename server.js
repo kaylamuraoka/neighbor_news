@@ -3,7 +3,6 @@ const session = require("express-session");
 const app = express();
 const path = require("path");
 const cors = require("cors");
-const mongoose = require("mongoose");
 const { cloudinary } = require("./utils/cloudinary");
 
 // setup express
@@ -30,7 +29,7 @@ app.post("/api/upload", async (req, res) => {
       upload_preset: "neighbor_news",
     });
     console.log(uploadResponse);
-    res.json({ msg: "yaya" });
+    res.json(uploadResponse);
   } catch (err) {
     console.error(err);
     res.status(500).json({ err: "Something went wrong" });

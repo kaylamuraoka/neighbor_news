@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import Container from "./../Container";
 import axios from "axios";
+import API from "../../utils/API"
 import {useHistory} from "react-router-dom";
 import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,7 +21,7 @@ function RegistrationForm() {
     e.preventDefault();
 
     try {
-      await axios.post("/users/register", form);
+      await API.registerUser(form);
       history.push("/");
       window.location.reload(false)
     } catch (err) {

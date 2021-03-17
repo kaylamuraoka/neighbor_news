@@ -8,8 +8,8 @@ export default {
     });
   },
   // Register users
-  registerUser: function(token) {
-    return axios.post("/register", { token: token });
+  registerUser: function(form) {
+    return axios.post("/users/register", form);
   },
   // Delete users
   deleteUser: function(token) {
@@ -29,18 +29,18 @@ export default {
   },
   // Gets all posts
   getPosts: function() {
-    return axios.get("/api/posts");
+    return axios.get("/blog/");
   },
   // Gets the post with the given id
   getPost: function(id) {
-    return axios.get("/api/posts/" + id);
+    return axios.get("/blog/" + id);
   },
   // Deletes the post with the given id
   deletePost: function(id) {
-    return axios.delete("/api/posts/" + id);
+    return axios.delete("/blog/" + id);
   },
   // Saves a post to the database
   savePost: function(postData) {
-    return axios.post("/api/posts", postData);
+    return axios.post("/blog/", postData);
   }
 };
