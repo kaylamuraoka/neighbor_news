@@ -10,9 +10,25 @@ module.exports = {
   register: async (req, res) => {
     //   Checking to see that the user passes all the necessary information when trying create a profile
     try {
-      const { email, password, passwordCheck, displayName, firstName, lastName, zipCode} = req.body;
+      const {
+        email,
+        password,
+        passwordCheck,
+        displayName,
+        firstName,
+        lastName,
+        zipCode,
+      } = req.body;
 
-      if (!email || !password || !passwordCheck || !displayName || !firstName || !lastName || !zipCode) {
+      if (
+        !email ||
+        !password ||
+        !passwordCheck ||
+        !displayName ||
+        !firstName ||
+        !lastName ||
+        !zipCode
+      ) {
         return res
           .status(400)
           .json({ msg: "Not all fields have been entered" });
@@ -43,7 +59,7 @@ module.exports = {
         displayName,
         firstName,
         lastName,
-        zipCode
+        zipCode,
       });
 
       // Start here to confirm that a user is logged in
@@ -55,7 +71,7 @@ module.exports = {
 
       console.log(confirmationToken);
 
-    //   Setting up email to send new user a confirmation email
+      //   Setting up email to send new user a confirmation email
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -71,7 +87,7 @@ module.exports = {
         text: `Click to confirm http://localhost:3000/confirm_token/${confirmationToken.token}`,
       };
 
-    //   Sending the user an email if there is an error then it will console log it
+      //   Sending the user an email if there is an error then it will console log it
       transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
           console.log(error);
@@ -133,6 +149,10 @@ module.exports = {
       res.json({
         displayName: user.displayName,
         id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        zipCode: user.zipCode,
       });
     } catch (err) {
       res.send(err.response);
