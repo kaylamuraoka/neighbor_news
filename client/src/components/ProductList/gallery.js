@@ -39,8 +39,10 @@ const Gallery = () => {
       {userData &&
         userData.map((data, index) => {
           return (
-            <div className="card col-3" key={index}>
-              <img src={data.imgUrl} className="card-img-top"></img>
+            <div className="card col-4" key={index}>
+              <a target="_blank" href={data.imgUrl}>
+                <img src={data.imgUrl} className="card-img-top"></img>
+              </a>
               <div className="card-body">
                 <h5 className="card-title">{data.title}</h5>
                 <div className="card-text">
