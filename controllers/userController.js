@@ -159,6 +159,27 @@ module.exports = {
     }
   },
 
+  updateUser: async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id)
+      const { displayName, id, firstName, lastName, email, zipCode } = req.body;
+
+      console.log(req.body)
+
+      if (displayName) user.displayName = displayName;
+      if (id) user.id = id;
+      if (firstName) user.firstName = firstName;
+      if (lastName) user.lastName = lastName;
+      if (email) user.email = email;
+      if (zipCode) user.zipCode = zipCode;
+
+      res.json(await user.save());
+      
+    } catch (err) {
+      res.send({error:err})
+    }
+  },
+
   deleteUser: async (req, res, next) => {
     try {
       const deletedUser = await User.findByIdAndDelete(req.user);

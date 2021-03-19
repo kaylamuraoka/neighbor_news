@@ -33,6 +33,7 @@ function App() {
       try {
         const userRes = await API.getUser(token);
         setUserData({ token, user: userRes.data });
+        console.log(userRes)
       } catch (err) {
         console.log("User must login");
       }

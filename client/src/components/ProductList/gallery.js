@@ -39,7 +39,7 @@ const Gallery = () => {
       {userData &&
         userData.map((data, index) => {
           return (
-            <div className="card col-4" key={index}>
+            <div className="card col-4 m-2" key={index}>
               <a target="_blank" href={data.imgUrl}>
                 <img src={data.imgUrl} className="card-img-top"></img>
               </a>
@@ -50,6 +50,7 @@ const Gallery = () => {
                   <br></br>${data.price}
                   <br></br>Uploaded By:{data.displayName}
                 </div>
+                <button>Delete</button>
               </div>
             </div>
           );
