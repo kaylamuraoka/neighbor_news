@@ -1,6 +1,17 @@
-.absolute {
-  position: absolute;
-  top: 80px;
-  right: 0;
-  border: 3px solid green;
+.card-text {
+  font-size: scale;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card {
+  float: left;
+  height: auto;
+}
+
+img {
+  width: 200px;
+  height: 200px;
 }

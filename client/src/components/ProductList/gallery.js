@@ -1,6 +1,4 @@
 import react, { useEffect, useState, Component } from "react";
-import { CloudinaryContext, Transformation, Image } from "cloudinary-react";
-import { render } from "react-dom";
 import "./style.css";
 
 const Gallery = () => {
@@ -35,19 +33,20 @@ const Gallery = () => {
   }, []);
 
   return (
-    <div className="main">
+    <div className="cool">
       <h1>Product Listing</h1>
+
       {userData &&
         userData.map((data, index) => {
           return (
-            <div className="card col-4" key={index}>
+            <div className="card col-3" key={index}>
               <img src={data.imgUrl} className="card-img-top"></img>
               <div className="card-body">
                 <h5 className="card-title">{data.title}</h5>
                 <div className="card-text">
                   {data.text}
                   <br></br>${data.price}
-                  <br></br>Upload By:{data.displayName}
+                  <br></br>Uploaded By:{data.displayName}
                 </div>
               </div>
             </div>
