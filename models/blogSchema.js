@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const BlogSchema = new Schema({
+    userId: {
+      type: String,
+      required: true
+    },
+
     displayName: { 
       type: String, 
       required: true 
@@ -28,6 +33,15 @@ const BlogSchema = new Schema({
       type: Number, 
       required: true 
     },
+
+    imgUrl: {
+      type: String, 
+    },
+
+    price: {
+      type: Number,
+      required: true
+    }
 });
 
 const Blog = mongoose.model("blog", BlogSchema);

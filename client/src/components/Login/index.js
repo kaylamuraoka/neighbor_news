@@ -1,8 +1,8 @@
 import React, { useRef, useState, useContext, useEffect } from "react";
-import UserContext from "../../context/UserContext.js"
+import UserContext from "../../context/UserContext.js";
 import Container from "./../Container";
-import API from "../../utils/API"
-import {useHistory} from "react-router-dom";
+import API from "../../utils/API";
+import { useHistory } from "react-router-dom";
 
 function LoginPage() {
   const [form, setForm] = useState();
@@ -17,7 +17,7 @@ function LoginPage() {
     e.preventDefault();
     try {
       const { data } = await API.loginUser(form);
-      console.log(data)
+      console.log(data);
       setUserData({
         token: data.token,
         user: data.user,
@@ -25,10 +25,10 @@ function LoginPage() {
 
       localStorage.setItem("auth-token", data.token);
       await history.push("/");
-      window.location.reload(false)
+      window.location.reload(false);
     } catch (err) {
       console.log(err.response);
-      alert(err.response.data.msg)
+      alert(err.response.data.msg);
     }
   };
 
@@ -39,8 +39,11 @@ function LoginPage() {
   return (
     <Container>
       <div className="row">
-        <div className='col-md-12'>
-          <h2 className="text-center">Login to Account</h2>
+        <div className="col-md-12">
+          <h3 className="text-center font-weight-bold">Login</h3>
+          <p className="text-muted text-center">
+            Welcome Back! Please login to your account
+          </p>
         </div>
       </div>
       <div className="row">
@@ -61,7 +64,7 @@ function LoginPage() {
                 placeholder="Email Address"
                 required
                 onChange={onChange}
-                name='email'
+                name="email"
               />
               <small id="email-validation" className="form-text"></small>
             </div>
@@ -77,10 +80,8 @@ function LoginPage() {
                 name="password"
               />
             </div>
-            <div className='col-md-12'>
-              <button className="btn btn-default btn-primary">
-                Submit
-              </button>
+            <div className="col-md-12">
+              <button className="btn btn-default btn-primary">Submit</button>
             </div>
           </form>
         </div>

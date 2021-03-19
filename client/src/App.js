@@ -10,9 +10,9 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Messages from "./pages/Messages";
 import ProductListing from "./pages/ProductListing";
-import Account from "./pages/Account"
-import NoMatch from "./pages/Nomatch"
-import API from "./utils/API"
+import Account from "./pages/Account";
+import NoMatch from "./pages/Nomatch";
+import API from "./utils/API";
 import UserContext from "./context/UserContext";
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
   };
 
   const logout = () => {
-    console.log("logout clicked")
+    console.log("logout clicked");
     setUserData({ token: undefined, user: undefined });
     localStorage.setItem("auth-token", "");
   };
@@ -49,20 +49,12 @@ function App() {
   return (
     <Router>
       {!userData.user ? (
-            <Navbar 
-            user={userData}
-            name="sending login"
-            />
-          )
-          :
-            <Navbar 
-            user={userData}
-            onClick={logout}
-            name="sending logout"
-            />
-        }
+        <Navbar user={userData} name="sending login" />
+      ) : (
+        <Navbar user={userData} onClick={logout} name="sending logout" />
+      )}
       <Wrapper>
-        <UserContext.Provider value={{ userData, setUserData}}>
+        <UserContext.Provider value={{ userData, setUserData }}>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/upload" component={Uploads} />
