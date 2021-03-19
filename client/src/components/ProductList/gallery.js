@@ -27,7 +27,7 @@ const Gallery = () => {
             {imageIds &&
               imageIds.map((imageId, index) => {
                 return (
-                  <div className="col-4" key={index}>
+                  <div className="card col-4" key={index}>
                     <div className="img">
                       <a
                         target="_blank"
@@ -37,17 +37,12 @@ const Gallery = () => {
                           key={index}
                           cloudName="dkpdbkahw"
                           publicId={imageId}
-                        >
-                          <Transformation
-                            crop="scale"
-                            width="300"
-                            height="200"
-                            dpr="auto"
-                            responsive_placeholder="blank"
-                          />
-                        </Image>
+                          width="400"
+                          crop="scale"
+                          className="card-img-top"
+                        ></Image>
                       </a>
-                      <div className="desc">
+                      <div className="desc card-text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Iure fugiat iusto reprehenderit esse, repellat libero,
                         cupiditate voluptate laborum explicabo quod saepe, at
