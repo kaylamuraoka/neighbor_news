@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Wrapper from "./components/Wrapper";
@@ -14,6 +14,9 @@ import Account from "./pages/Account";
 import NoMatch from "./pages/Nomatch";
 import API from "./utils/API";
 import UserContext from "./context/UserContext";
+import Main from "./components/Main";
+import Sidebar from "./components/Sidebar";
+import ContentContainer from "./components/ContentContainer";
 
 function App() {
   const [userData, setUserData] = useState({
@@ -47,30 +50,35 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      {!userData.user ? (
-        <Navbar user={userData} name="sending login" />
-      ) : (
-        <Navbar user={userData} onClick={logout} name="sending logout" />
-      )}
+    <BrowserRouter>
       <Wrapper>
-        <UserContext.Provider value={{ userData, setUserData }}>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/upload" component={Uploads} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/messages" component={Messages} />
-            <Route exact path="/productlist" component={ProductListing} />
-            <Route exact path="/account" component={Account} />
-            <Route>
-              <NoMatch />
-            </Route>
-          </Switch>
-        </UserContext.Provider>
+        <Sidebar />
+        <Main>
+          {!userData.user ? (
+            <Navbar user={userData} name="sending login" />
+          ) : (
+            <Navbar user={userData} onClick={logout} name="sending logout" />
+          )}
+          <ContentContainer>
+            <UserContext.Provider value={{ userData, setUserData }}>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/upload" component={Uploads} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/messages" component={Messages} />
+                <Route exact path="/productlist" component={ProductListing} />
+                <Route exact path="/account" component={Account} />
+                <Route>
+                  <NoMatch />
+                </Route>
+              </Switch>
+            </UserContext.Provider>
+          </ContentContainer>
+          <Footer />
+        </Main>
       </Wrapper>
-      <Footer />
-    </Router>
+    </BrowserRouter>
   );
 }
 
