@@ -1,4 +1,5 @@
-import react, { useEffect, useState, Component } from "react";
+import react, { useEffect, useState} from "react";
+import API from "../../utils/API";
 import "./style.css";
 
 const Gallery = () => {
@@ -28,6 +29,18 @@ const Gallery = () => {
       console.error(error);
     }
   };
+
+  const deleteProduct = async (e) => {
+    e.preventDefault()
+    try {
+      const id = e.target.id;
+      await API.deletePost(id)
+      window.location.reload(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     getInfo();
   }, []);
@@ -50,7 +63,7 @@ const Gallery = () => {
                   <br></br>${data.price}
                   <br></br>Uploaded By:{data.displayName}
                 </div>
-                <button>Delete</button>
+                <button id={data._id} className="btn btn-default btn-primary" onClick={deleteProduct}>Delete</button>
               </div>
             </div>
           );
