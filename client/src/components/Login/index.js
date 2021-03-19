@@ -24,7 +24,7 @@ function LoginPage() {
       });
 
       localStorage.setItem("auth-token", data.token);
-      await history.push("/");
+      await history.push("/account");
       window.location.reload(false);
     } catch (err) {
       console.log(err.response);
