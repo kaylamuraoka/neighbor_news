@@ -28,11 +28,14 @@ module.exports = {
     postBlog: async (req, res) => {
         try {
             const newBlogPost = new Blog({
+            userId: req.body.userId,
             displayName: req.body.displayName,
             title: req.body.title,
             text: req.body.text,
             category: req.body.category,
-            zipCode: req.body.zipCode
+            zipCode: req.body.zipCode,
+            imgUrl: req.body.imgUrl,
+            price: req.body.price
             });
             res.json(await newBlogPost.save());
         } catch (err) {
