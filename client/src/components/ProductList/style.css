@@ -1,0 +1,6 @@
+.absolute {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  border: 3px solid green;
+}
