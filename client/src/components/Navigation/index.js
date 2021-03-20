@@ -68,7 +68,7 @@ function Navigation(props) {
           {props.userData.user ? (
             <>
               <div
-                class="navbar-links-div"
+                className="navbar-links-div"
                 style={{ display: "flex", paddingRight: "10px" }}
               >
                 <NavIcon path="/messages" icon={<RiMessage2Fill />} count="4" />

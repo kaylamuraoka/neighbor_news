@@ -1,6 +1,5 @@
-import react, { useEffect, useState, Component } from "react";
-import { CloudinaryContext, Transformation, Image } from "cloudinary-react";
-import { render } from "react-dom";
+import React, { useEffect, useState } from "react";
+import { CloudinaryContext, Image } from "cloudinary-react";
 
 const Gallery = () => {
   const [imageIds, setImageIds] = useState([]);
@@ -31,6 +30,7 @@ const Gallery = () => {
                     <div className="img">
                       <a
                         target="_blank"
+                        rel="noreferrer"
                         href={`https://res.cloudinary.com/dkpdbkahw/image/upload/v1616008786/${imageId}.jpg`}
                       >
                         <Image
