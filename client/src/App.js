@@ -70,7 +70,11 @@ function App() {
           <ContentContainer>
             <UserContext.Provider value={{ userData, setUserData }}>
               <Switch>
-                <Route exact path="/" component={Home} />
+                <Route
+                  exact
+                  path="/"
+                  render={(props) => <Home {...props} userData={userData} />}
+                />
                 <Route exact path="/upload" component={Uploads} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
