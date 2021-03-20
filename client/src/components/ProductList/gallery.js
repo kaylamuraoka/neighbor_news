@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { CloudinaryContext, Image } from "cloudinary-react";
+import API from "./../../utils/API";
 
 const Gallery = () => {
   const [imageIds, setImageIds] = useState([]);
+  const [userData, setUserData] = useState([]);
 
   const loadImages = async () => {
     try {
@@ -17,46 +19,61 @@ const Gallery = () => {
     loadImages();
   }, []);
 
+  const getInfo = async () => {
+    try {
+      const res = await fetch("/blog/");
+      const data = await res.json();
+      setUserData(data);
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const deleteProduct = async (e) => {
+    e.preventDefault();
+    try {
+      const id = e.target.id;
+      await API.deletePost(id);
+      window.location.reload(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getInfo();
+  }, []);
+
   return (
-    <div>
-      <div className="main">
-        <h1>Product Listing</h1>
-        <div className="gallery">
-          <CloudinaryContext cloudName="cloud_name">
-            {imageIds &&
-              imageIds.map((imageId, index) => {
-                return (
-                  <div className="card col-4" key={index}>
-                    <div className="img">
-                      <a
-                        target="_blank"
-                        rel="noreferrer"
-                        href={`https://res.cloudinary.com/dkpdbkahw/image/upload/v1616008786/${imageId}.jpg`}
-                      >
-                        <Image
-                          key={index}
-                          cloudName="dkpdbkahw"
-                          publicId={imageId}
-                          width="400"
-                          crop="scale"
-                          className="card-img-top"
-                        ></Image>
-                      </a>
-                      <div className="desc card-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Iure fugiat iusto reprehenderit esse, repellat libero,
-                        cupiditate voluptate laborum explicabo quod saepe, at
-                        architecto. Commodi eveniet voluptatem exercitationem
-                        velit fugiat. Esse.
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-          </CloudinaryContext>
-          <div className="clearfix"></div>
-        </div>
-      </div>
+    <div className="cool">
+      <h1>Product Listing</h1>
+
+      {userData &&
+        userData.map((data, index) => {
+          return (
+            <div className="card col-4 m-2" key={index}>
+              <a target="_blank" href={data.imgUrl}>
+                <img src={data.imgUrl} className="card-img-top"></img>
+              </a>
+              <div className="card-body">
+                <h5 className="card-title">{data.title}</h5>
+                <div className="card-text">
+                  {data.text}
+                  <br></br>${data.price}
+                  <br></br>Uploaded By:{data.displayName}
+                </div>
+                <button
+                  id={data._id}
+                  className="btn btn-default btn-primary"
+                  onClick={deleteProduct}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          );
+        })}
     </div>
   );
 };
