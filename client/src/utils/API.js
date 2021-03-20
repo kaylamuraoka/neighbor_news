@@ -32,6 +32,10 @@ export default {
   loginUser: function (form) {
     return axios.post("/users/login", form);
   },
+  // Update users
+  updateUser: function(id, userUpdates) {
+    return axios.patch("/users/" + id, userUpdates);
+  },
   // Gets all posts
   getPosts: function () {
     return axios.get("/blog/");

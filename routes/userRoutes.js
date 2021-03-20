@@ -4,6 +4,7 @@ const {
   register,
   login,
   getUser,
+  updateUser,
   deleteUser,
   checkToken,
 } = require("../controllers/UserController");
