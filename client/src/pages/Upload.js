@@ -102,7 +102,7 @@ export default function Upload() {
         )}
         <br></br>
         <div className="mb-3">
-          <label for="exampleFormControlInput1" className="form-label">
+          <label htmlFor="exampleFormControlInput1" className="form-label">
             Title
           </label>
           <input
@@ -115,7 +115,7 @@ export default function Upload() {
           />
         </div>
         <div className="mb-3">
-          <label for="exampleFormControlTextarea1" className="form-label">
+          <label htmlFor="exampleFormControlTextarea1" className="form-label">
             Description
           </label>
           <textarea
@@ -128,7 +128,7 @@ export default function Upload() {
           ></textarea>
         </div>
         <div className="mb-3">
-          <label for="exampleFormControlPricearea1" className="form-label">
+          <label htmlFor="exampleFormControlPricearea1" className="form-label">
             Price
           </label>
           <input
