@@ -56,68 +56,81 @@ const Gallery = () => {
         <h1>Product Listings</h1>
         <p>Check out all the products listed for sale in your neighborhood</p>
         <hr />
-        <p>
-          <Button
-            variant="primary"
-            onClick={() => {
-              history.push("/upload");
-            }}
-          >
-            List a product
-            <BsPlusCircleFill
-              style={{ marginLeft: "8px", marginBottom: "3px" }}
-            />
-          </Button>
-        </p>
+
+        <Button
+          variant="primary"
+          onClick={() => {
+            history.push("/upload");
+          }}
+        >
+          List a product
+          <BsPlusCircleFill
+            style={{ marginLeft: "8px", marginBottom: "3px" }}
+          />
+        </Button>
       </Jumbotron>
 
       {userData &&
         userData.map((data, index) => {
           return (
-            <div className="card col-4 m-2" key={index}>
-              <a target="_blank" rel="noreferrer" href={data.imgUrl}>
-                <img src={data.imgUrl} className="card-img-top" alt="product" />
-              </a>
-              <div className="card-body">
-                <h5
-                  className="card-title text-center"
-                  style={{ textTransform: "capitalize" }}
-                >
-                  {data.title}
-                </h5>
-                <div className="card-text">
-                  <strong>Description: </strong>
-                  {data.text}
-                  <br></br>
-                  <strong>Price:</strong> ${data.price}
-                  <br></br>
-                  <p style={{ textTransform: "capitalize" }}>
-                    <strong>Seller:</strong> {data.displayName}
-                  </p>
-                </div>
-                <div className="ml-auto">
-                  <Button
-                    variant="danger"
-                    size="sm"
-                    id={data._id}
-                    onClick={deleteProduct}
-                    className="mr-1"
-                  >
-                    {" "}
-                    Delete{" "}
-                    <BsTrashFill
-                      style={{ marginLeft: "3px", marginBottom: "3px" }}
+            <Card className="mb-3" style={{ maxWidth: "540px" }} key={index}>
+              <div className="row no-gutters">
+                <div className="col-md-4">
+                  <a target="_blank" rel="noreferrer" href={data.imgUrl}>
+                    <Card.Img
+                      src={data.imgUrl}
+                      className="card-img"
+                      alt="product"
                     />
-                  </Button>
-                  <Button variant="info" size="sm">
-                    View{" "}
-                    <AiFillEye
-                      style={{ marginLeft: "3px", marginBottom: "3px" }}
-                    />{" "}
-                  </Button>
+                  </a>
+                </div>
+                <div className="col-md-8">
+                  <Card.Body>
+                    <Card.Title style={{ textTransform: "capitalize" }}>
+                      {data.title}
+                    </Card.Title>
+                    <Card.Text>
+                      <strong>Description: </strong>
+                      {data.text}
+                      <br />
+                      <strong>Price:</strong> ${data.price}
+                      <br />
+                      <Card.Text style={{ textTransform: "capitalize" }}>
+                        <strong>Seller:</strong> {data.displayName}
+                      </Card.Text>
+                      <Card.Text style={{ textTransform: "capitalize" }}>
+                        <strong>Category:</strong> {data.category}
+                      </Card.Text>
+                    </Card.Text>
+                    <Card.Text>
+                      <small className="text-muted">
+                        Posted at {data.date}
+                      </small>
+                    </Card.Text>
+
+                    <Button
+                      variant="danger"
+                      size="sm"
+                      id={data._id}
+                      onClick={deleteProduct}
+                      className="mr-1"
+                    >
+                      {" "}
+                      Delete{" "}
+                      <BsTrashFill
+                        style={{ marginLeft: "3px", marginBottom: "3px" }}
+                      />
+                    </Button>
+                    <Button variant="info" size="sm">
+                      View{" "}
+                      <AiFillEye
+                        style={{ marginLeft: "3px", marginBottom: "3px" }}
+                      />{" "}
+                    </Button>
+                  </Card.Body>
                 </div>
               </div>
-            </div>
+            </Card>
           );
         })}
     </Container>
