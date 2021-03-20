@@ -33,7 +33,7 @@ export default {
     return axios.post("/users/login", form);
   },
   // Update users
-  updateUser: function(id, userUpdates) {
+  updateUser: function (id, userUpdates) {
     return axios.patch("/users/" + id, userUpdates);
   },
   // Gets all posts

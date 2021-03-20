@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { CloudinaryContext, Image } from "cloudinary-react";
 import API from "./../../utils/API";
 
 const Gallery = () => {
@@ -15,6 +14,7 @@ const Gallery = () => {
       console.error(err);
     }
   };
+
   useEffect(() => {
     loadImages();
   }, []);
@@ -53,8 +53,8 @@ const Gallery = () => {
         userData.map((data, index) => {
           return (
             <div className="card col-4 m-2" key={index}>
-              <a target="_blank" href={data.imgUrl}>
-                <img src={data.imgUrl} className="card-img-top"></img>
+              <a target="_blank" rel="noreferrer" href={data.imgUrl}>
+                <img src={data.imgUrl} className="card-img-top" alt="product" />
               </a>
               <div className="card-body">
                 <h5 className="card-title">{data.title}</h5>
