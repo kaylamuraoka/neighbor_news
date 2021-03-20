@@ -1,62 +1,148 @@
 import React from "react";
 import "./style.css";
-import NavbarLink from "../NavbarLink";
-import { Link } from "react-router-dom";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import NavIcon from "../NavIcon";
-import { TiMessages } from "react-icons/ti";
-import { BsBell } from "react-icons/bs";
+import { FaMapMarkerAlt, FaStore, FaCalendarAlt, FaTags } from "react-icons/fa";
+import { RiMessage2Fill, RiLogoutBoxRFill } from "react-icons/ri";
+import { SiAddthis } from "react-icons/si";
+
 import {
-  AiOutlineTags,
-  AiOutlineHome,
-  AiOutlineFolderAdd,
+  AiTwotoneBell,
+  AiFillSafetyCertificate,
+  AiTwotoneHome,
+  AiFillSetting,
 } from "react-icons/ai";
-import { GiHamburgerMenu } from "react-icons/gi";
-import SearchBar from "../SearchBar";
 import { useHistory } from "react-router-dom";
+import { slide as Menu } from "react-burger-menu";
 
 function Navigation(props) {
   const history = useHistory();
+  const imgPath = process.env.PUBLIC_URL + "/img/";
+
+  const dropdownLink = {
+    padding: "0px",
+    marginLeft: "0px",
+  };
 
   return (
-    <nav class="navbar navbar-light bg-light">
-      <Link className="navbar-brand brand-name" to="/">
-        <h4>Hey, Neighbor</h4>
-      </Link>
-      <Nav className="ml-auto">
-        {/* This is shown when the uer is logged in  */}
-        {props.userData.user ? (
-          <>
-            <span className="sidebar-toggle d-flex mr-2">
-              <GiHamburgerMenu className="hamburger" />
-            </span>
-          </>
-        ) : (
-          <>
-            <NavbarLink label="Logout" path="/login" />
-            <NavbarLink label="Profile" path="/account" />
-          </>
-        )}
-      </Nav>
-    </nav>
+    <>
+      {props.userData.user ? (
+        <Menu style={{ top: "0px", right: "0px" }}>
+          <a className="menu-item" href="/">
+            <AiTwotoneHome style={{ marginRight: "8px" }} /> Home
+          </a>
+          <a className="menu-item" href="/productlist">
+            <FaTags style={{ marginRight: "8px" }} /> For Sale & Free
+          </a>
+          <a className="menu-item" href="/upload">
+            <SiAddthis style={{ marginRight: "8px" }} /> List a product
+          </a>
+          <a className="menu-item" href="/">
+            <FaMapMarkerAlt style={{ marginRight: "8px" }} /> Map
+          </a>
 
-    // <SearchBar placeholder="Search for products..." />
-    // <div class="navbar-links-div">
-    //   <NavIcon path="/" icon={<AiOutlineHome />} />
-    //   <NavIcon path="/messages" icon={<TiMessages />} count="4" />
-    //   <NavIcon path="/alerts" icon={<BsBell />} count="2" />
-    //   <NavIcon path="/upload" icon={<AiOutlineFolderAdd />} />
-    //   <NavIcon path="/productlist" icon={<AiOutlineTags />} count="3" />
-    /* {!props.user.user ? (
-          <>
-            <NavbarLink label="Login" path="/login" />
-            <NavbarLink label="Register" path="/register" />
-          </>
-        ) : (
-          <>
-           
-          </>
-        )} */
+          <a className="menu-item" href="/">
+            <FaStore style={{ marginRight: "8px" }} /> Businesses
+          </a>
+          <a className="menu-item" href="/">
+            <FaCalendarAlt style={{ marginRight: "8px" }} /> Events
+          </a>
+          <a className="menu-item" href="/">
+            <AiFillSafetyCertificate style={{ marginRight: "8px" }} /> Crime &
+            Safety
+          </a>
+        </Menu>
+      ) : null}
+      <Navbar bg="light" variant="light">
+        <Navbar.Brand href="/">
+          <img
+            alt="logo"
+            src={`${imgPath}neighbor.png`}
+            className="d-inline-block align-top logo"
+          />{" "}
+          Hey, Neighbor
+        </Navbar.Brand>
+
+        <Nav className="ml-auto">
+          {/* This is shown when the uer is logged in  */}
+          {props.userData.user ? (
+            <>
+              <div
+                class="navbar-links-div"
+                style={{ display: "flex", paddingRight: "10px" }}
+              >
+                <NavIcon path="/messages" icon={<RiMessage2Fill />} count="4" />
+                <NavIcon path="/" icon={<AiTwotoneBell />} count="2" />
+                <Nav.Link
+                  onClick={() => {
+                    history.push("/account");
+                  }}
+                  style={{ paddingRight: "0px", marginRight: "-3px" }}
+                >
+                  <img
+                    id="profileImage"
+                    src={`${imgPath}default_avatar.png`}
+                    alt="Avatar"
+                    width="30px"
+                  />
+                </Nav.Link>
+                <NavDropdown
+                  title={`${props.userData.user.firstName} ${props.userData.user.lastName}`}
+                  id="nav-dropdown"
+                  className="dropdown-menu-right text-title-case"
+                  width="10px"
+                  style={{
+                    paddingTop: "6px",
+                    marginLeft: "0px",
+                    paddingLeft: "0px",
+                    paddingRight: "20px",
+                  }}
+                >
+                  <NavDropdown.Item style={dropdownLink}>
+                    <Nav.Link
+                      onClick={() => {
+                        props.logout();
+                        history.push("/");
+                      }}
+                    >
+                      <RiLogoutBoxRFill style={{ marginRight: "8px" }} />
+                      Logout
+                    </Nav.Link>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item style={dropdownLink}>
+                    <Nav.Link
+                      onClick={() => {
+                        history.push("/account");
+                      }}
+                    >
+                      <AiFillSetting style={{ marginRight: "8px" }} />
+                      Profile
+                    </Nav.Link>
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </div>
+            </>
+          ) : (
+            <>
+              <Nav.Link
+                onClick={() => {
+                  history.push("/login");
+                }}
+              >
+                Login
+              </Nav.Link>
+              <Nav.Link
+                onClick={() => {
+                  history.push("/register");
+                }}
+              >
+                Register
+              </Nav.Link>
+            </>
+          )}
+        </Nav>
+      </Navbar>
+    </>
   );
 }
 

@@ -1,32 +1,101 @@
 @import url("https://fonts.googleapis.com/css2?family=Cuprum:wght@600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap");
 
-.brand-name {
-  font-family: "Sigmar One", cursive;
-}
-.navbar {
-  border-bottom: 1px solid #e4ebf6;
-  box-shadow: 0 0 2rem 0 rgb(53 64 82 / 10%);
-  display: flex;
-  position: relative;
-  align-items: center;
-  padding: 0.875rem 1.25rem;
+.text-title-case {
+  text-transform: capitalize;
 }
 
-.navbar-expand .navbar-collapse {
-  display: flex !important;
-  flex-basis: auto;
+a.navbar-brand {
+  font-family: "Sigmar One", cursive !important;
+  margin-left: -3px;
+  font-size: 24px;
 }
 
-.hamburger {
-  cursor: pointer;
-  color: #3f4b57;
-  height: 40px;
+.logo {
+  width: 55px;
+  height: 43px;
+  padding-top: 0px;
+}
+
+/* Styling for the sidebar */
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
   width: 30px;
-  transition: ease-in-out, color 0.1s ease-in-out;
+  height: 25px;
+  right: 15px;
+  top: 20px;
 }
 
-.hamburger:hover {
-  color: gray;
-  cursor: pointer;
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #373a47;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #a90000;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 30px;
+  width: 54px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #373a47;
+  padding: 2em 1.2em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.6em;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+  color: #d1d1d1;
+  margin-bottom: 10px;
+  text-align: left;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.bm-item:hover {
+  color: #ffffff;
 }

@@ -15,7 +15,7 @@ import NoMatch from "./pages/Nomatch";
 import API from "./utils/API";
 import UserContext from "./context/UserContext";
 import Main from "./components/Main";
-import Sidebar from "./components/Sidebar";
+
 import ContentContainer from "./components/ContentContainer";
 
 function App() {
@@ -33,6 +33,7 @@ function App() {
     } else {
       try {
         const tokenRes = await API.tokenIsValid(token);
+
         if (tokenRes.data) {
           const userRes = await API.getUser(token);
           setUserData({
@@ -64,14 +65,8 @@ function App() {
   return (
     <BrowserRouter>
       <Wrapper>
-        <Sidebar />
         <Main>
           <Navigation userData={userData} logout={logout} />
-          {/* {!userData.user ? (
-            <Navbar user={userData} name="sending login" />
-          ) : (
-            <Navbar user={userData} onClick={logout} name="sending logout" />
-          )} */}
           <ContentContainer>
             <UserContext.Provider value={{ userData, setUserData }}>
               <Switch>

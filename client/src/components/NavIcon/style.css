@@ -4,8 +4,8 @@
   padding: 12px 0px;
   position: relative;
   display: inline-block;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 .nav-icon svg {
   font-size: 25px;
@@ -17,9 +17,9 @@
 
 .nav-icon .badge {
   position: absolute;
-  top: 0px;
-  right: -5px;
-  padding: 5px 7px;
+  top: 3px;
+  right: -7px;
+  padding: 4px 6px;
   font-size: 11px;
   border-radius: 50%;
   background-color: green;

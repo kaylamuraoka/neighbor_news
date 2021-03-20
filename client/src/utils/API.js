@@ -18,7 +18,7 @@ export default {
     });
   },
   tokenIsValid: function (token) {
-    return axios.delete("/users/tokenIsValid", {
+    return axios.get("/users/tokenIsValid", {
       headers: { "x-auth-token": token },
     });
   },

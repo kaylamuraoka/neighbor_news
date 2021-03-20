@@ -75,13 +75,13 @@ module.exports = {
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: "neighbornews@gmail.com",
-          pass: "1LMbRq61WYny",
+          user: "heyneighborteam@gmail.com",
+          pass: process.env.EMAIL_PASSWORD,
         },
       });
 
       const mailOptions = {
-        from: "neighbornews@gmail.com",
+        from: "heyneighborteam@gmail.com",
         to: newUser.email,
         subject: " Thanks for signing up",
         text: `Click to confirm http://localhost:3000/confirm_token/${confirmationToken.token}`,
