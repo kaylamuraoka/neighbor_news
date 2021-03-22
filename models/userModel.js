@@ -14,27 +14,22 @@ const UserSchema = new mongoose.Schema({
     minLength: 8,
     maxLength: 20,
   },
-
   displayName: {
     type: String,
     required: true,
   },
-
   firstName: {
     type: String,
     required: true,
   },
-
   lastName: {
     type: String,
     required: true,
   },
-
   zipCode: {
     type: Number,
     required: true,
   },
-
   confirmed: {
     type: Boolean,
     default: false,
