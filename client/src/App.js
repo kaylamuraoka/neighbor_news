@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/Navbar";
+import Navigation from "./components/Navigation";
 import Wrapper from "./components/Wrapper";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -15,7 +15,7 @@ import NoMatch from "./pages/Nomatch";
 import API from "./utils/API";
 import UserContext from "./context/UserContext";
 import Main from "./components/Main";
-import Sidebar from "./components/Sidebar";
+
 import ContentContainer from "./components/ContentContainer";
 
 function App() {
@@ -29,11 +29,18 @@ function App() {
 
     if (token === null) {
       localStorage.setItem("auth-token", "");
+      token = "";
     } else {
       try {
-        const userRes = await API.getUser(token);
-        setUserData({ token, user: userRes.data });
-        console.log(userRes)
+        const tokenRes = await API.tokenIsValid(token);
+
+        if (tokenRes.data) {
+          const userRes = await API.getUser(token);
+          setUserData({
+            token,
+            user: userRes.data,
+          });
+        }
       } catch (err) {
         console.log("User must login");
       }
@@ -42,7 +49,12 @@ function App() {
 
   const logout = () => {
     console.log("logout clicked");
-    setUserData({ token: undefined, user: undefined });
+
+    setUserData({
+      token: undefined,
+      user: undefined,
+    });
+
     localStorage.setItem("auth-token", "");
   };
 
@@ -53,17 +65,16 @@ function App() {
   return (
     <BrowserRouter>
       <Wrapper>
-        <Sidebar />
         <Main>
-          {!userData.user ? (
-            <Navbar user={userData} name="sending login" />
-          ) : (
-            <Navbar user={userData} onClick={logout} name="sending logout" />
-          )}
+          <Navigation userData={userData} logout={logout} />
           <ContentContainer>
             <UserContext.Provider value={{ userData, setUserData }}>
               <Switch>
-                <Route exact path="/" component={Home} />
+                <Route
+                  exact
+                  path="/"
+                  render={(props) => <Home {...props} userData={userData} />}
+                />
                 <Route exact path="/upload" component={Uploads} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />

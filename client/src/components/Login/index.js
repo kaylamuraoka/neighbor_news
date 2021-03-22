@@ -1,5 +1,4 @@
-import React, { useRef, useState, useContext, useEffect } from "react";
-import UserContext from "../../context/UserContext.js";
+import React, { useState } from "react";
 import Container from "./../Container";
 import API from "../../utils/API";
 import { useHistory } from "react-router-dom";

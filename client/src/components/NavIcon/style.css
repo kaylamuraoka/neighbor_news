@@ -17,9 +17,9 @@
 
 .nav-icon .badge {
   position: absolute;
-  top: 0px;
-  right: -5px;
-  padding: 5px 7px;
+  top: 3px;
+  right: -7px;
+  padding: 4px 6px;
   font-size: 11px;
   border-radius: 50%;
   background-color: green;

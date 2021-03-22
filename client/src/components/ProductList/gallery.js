@@ -1,8 +1,12 @@
-import react, { useEffect, useState} from "react";
-import API from "../../utils/API";
-import "./style.css";
+import React, { useEffect, useState } from "react";
+import API from "./../../utils/API";
+import { BsTrashFill, BsPlusCircleFill } from "react-icons/bs";
+import { AiFillEye } from "react-icons/ai";
+import { Jumbotron, Container, Button, Card } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 const Gallery = () => {
+  const history = useHistory();
   const [imageIds, setImageIds] = useState([]);
   const [userData, setUserData] = useState([]);
 
@@ -15,6 +19,7 @@ const Gallery = () => {
       console.error(err);
     }
   };
+
   useEffect(() => {
     loadImages();
   }, []);
@@ -31,10 +36,10 @@ const Gallery = () => {
   };
 
   const deleteProduct = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       const id = e.target.id;
-      await API.deletePost(id)
+      await API.deletePost(id);
       window.location.reload(false);
     } catch (error) {
       console.error(error);
@@ -46,29 +51,89 @@ const Gallery = () => {
   }, []);
 
   return (
-    <div className="cool">
-      <h1>Product Listing</h1>
+    <Container fluid>
+      <Jumbotron className="text-center">
+        <h1>Product Listings</h1>
+        <p>Check out all the products listed for sale in your neighborhood</p>
+        <hr />
+
+        <Button
+          variant="primary"
+          onClick={() => {
+            history.push("/upload");
+          }}
+        >
+          List a product
+          <BsPlusCircleFill
+            style={{ marginLeft: "8px", marginBottom: "3px" }}
+          />
+        </Button>
+      </Jumbotron>
 
       {userData &&
         userData.map((data, index) => {
           return (
-            <div className="card col-4 m-2" key={index}>
-              <a target="_blank" href={data.imgUrl}>
-                <img src={data.imgUrl} className="card-img-top"></img>
-              </a>
-              <div className="card-body">
-                <h5 className="card-title">{data.title}</h5>
-                <div className="card-text">
-                  {data.text}
-                  <br></br>${data.price}
-                  <br></br>Uploaded By:{data.displayName}
+            <Card className="mb-3" style={{ maxWidth: "540px" }} key={index}>
+              <div className="row no-gutters">
+                <div className="col-md-4">
+                  <a target="_blank" rel="noreferrer" href={data.imgUrl}>
+                    <Card.Img
+                      src={data.imgUrl}
+                      className="card-img"
+                      alt="product"
+                    />
+                  </a>
                 </div>
-                <button id={data._id} className="btn btn-default btn-primary" onClick={deleteProduct}>Delete</button>
+                <div className="col-md-8">
+                  <Card.Body>
+                    <Card.Title style={{ textTransform: "capitalize" }}>
+                      {data.title}
+                    </Card.Title>
+                    <Card.Text>
+                      <strong>Description: </strong>
+                      {data.text}
+                      <br />
+                      <strong>Price:</strong> ${data.price}
+                      <br />
+                      <Card.Text style={{ textTransform: "capitalize" }}>
+                        <strong>Seller:</strong> {data.displayName}
+                      </Card.Text>
+                      <Card.Text style={{ textTransform: "capitalize" }}>
+                        <strong>Category:</strong> {data.category}
+                      </Card.Text>
+                    </Card.Text>
+                    <Card.Text>
+                      <small className="text-muted">
+                        Posted at {data.date}
+                      </small>
+                    </Card.Text>
+
+                    <Button
+                      variant="danger"
+                      size="sm"
+                      id={data._id}
+                      onClick={deleteProduct}
+                      className="mr-1"
+                    >
+                      {" "}
+                      Delete{" "}
+                      <BsTrashFill
+                        style={{ marginLeft: "3px", marginBottom: "3px" }}
+                      />
+                    </Button>
+                    <Button variant="info" size="sm">
+                      View{" "}
+                      <AiFillEye
+                        style={{ marginLeft: "3px", marginBottom: "3px" }}
+                      />{" "}
+                    </Button>
+                  </Card.Body>
+                </div>
               </div>
-            </div>
+            </Card>
           );
         })}
-    </div>
+    </Container>
   );
 };
 
