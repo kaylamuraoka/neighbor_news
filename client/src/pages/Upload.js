@@ -10,29 +10,20 @@ export default function Upload() {
   const [previewSource, setPreviewSource] = useState("");
   const [selectedFile, setSelectedFile] = useState();
   const [form, setForm] = useState();
-  const [postData, setPostData] = useState();
   const history = useHistory();
 
   // This is used to set the form state with what needs to be posted to the database
   const onChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    blogDataChange();
-  };
-
-  // Creating one datasource to upload data to the database.
-  const blogDataChange = () => {
-    setPostData({
-      ...form,
-      userId: userData.user.id,
-      displayName: userData.user.displayName,
-      zipCode: userData.user.zipCode,
-    });
   };
 
   // Posting to the database
   const postSubmit = async (url) => {
     let blogPost = {
-      ...postData,
+      ...form,
+      userId: userData.user.id,
+      displayName: userData.user.displayName,
+      zipCode: userData.user.zipCode,
       ...url,
     };
     console.log(blogPost);
