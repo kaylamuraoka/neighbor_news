@@ -86,20 +86,29 @@ To install this application locally carry out the following steps:
 
 ### The NPM dependencies used in this project are:
 
-- [**mongodb**](https://www.mongodb.com/)
+#### Back-end Packages:
 
 - [**express**](https://expressjs.com/): the most widely used Node.js server framework, this allows us to create our own server-side APIs.
 
-- [**react**](https://reactjs.org/)
+- [**mongodb**](https://www.mongodb.com/):
+
+- [**jsonwebtoken**](https://www.npmjs.com/package/jsonwebtoken): used to create access tokens for an application
+
+- [**dotenv**](https://www.npmjs.com/package/dotenv): loads environment variables from a `.env` file into `process.env`.
+
+- [**cloudinary**](https://cloudinary.com/documentation/react_integration): for easily uploading images to the cloud
+
+- [**bycrptjs**](https://www.npmjs.com/package/bcrypt): library to help hash passwords.
+
+#### Front-end Packages:
+
+- [**react**](https://reactjs.org/):
 
 - [**mongoose**](https://mongoosejs.com/): a MongoDB object-document mapping, or ODM ) library for MongoDB and Node.js.
 
-- [**bootstrap**](https://getbootstrap.com/)
-- [**cloudinary**](https://cloudinary.com/documentation/react_integration)
-- [**bycrptjs**](https://www.npmjs.com/package/bcrypt)
-- [**axios**](npmjs.com/package/axios)
-- [**jsonwebtoken**](https://www.npmjs.com/package/jsonwebtoken)
-- [**dotenv**](https://www.npmjs.com/package/dotenv)
+- [**bootstrap**](https://getbootstrap.com/):
+
+- [**axios**](npmjs.com/package/axios): a Javascript library used to make HTTP requests from node.js.
 
 ## Usage
 
