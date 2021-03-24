@@ -4,15 +4,21 @@ const {
   register,
   login,
   getUser,
+  updateUser,
   deleteUser,
+  checkToken,
 } = require("../controllers/UserController");
 
 router.post("/register", register);
 
 router.post("/login", login);
 
+router.patch("/:id", updateUser);
+
 router.get("/", auth, getUser);
 
-router.delete("/", auth, deleteUser);
+router.delete("/delete", auth, deleteUser);
+
+router.get("/tokenIsValid", checkToken);
 
 module.exports = router;

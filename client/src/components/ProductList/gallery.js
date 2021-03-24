@@ -1,9 +1,14 @@
-import react, { useEffect, useState, Component } from "react";
-import { CloudinaryContext, Transformation, Image } from "cloudinary-react";
-import { render } from "react-dom";
+import React, { useEffect, useState } from "react";
+import API from "./../../utils/API";
+import { BsTrashFill, BsPlusCircleFill } from "react-icons/bs";
+import { AiFillEye } from "react-icons/ai";
+import { Jumbotron, Container, Button, Card } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 const Gallery = () => {
+  const history = useHistory();
   const [imageIds, setImageIds] = useState([]);
+  const [userData, setUserData] = useState([]);
 
   const loadImages = async () => {
     try {
@@ -14,50 +19,121 @@ const Gallery = () => {
       console.error(err);
     }
   };
+
   useEffect(() => {
     loadImages();
   }, []);
 
+  const getInfo = async () => {
+    try {
+      const res = await fetch("/blog/");
+      const data = await res.json();
+      setUserData(data);
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const deleteProduct = async (e) => {
+    e.preventDefault();
+    try {
+      const id = e.target.id;
+      await API.deletePost(id);
+      window.location.reload(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getInfo();
+  }, []);
+
   return (
-    <div>
-      <div className="main">
-        <h1>Product Listing</h1>
-        <div className="gallery">
-          <CloudinaryContext cloudName="cloud_name">
-            {imageIds &&
-              imageIds.map((imageId, index) => {
-                return (
-                  <div className="card col-4" key={index}>
-                    <div className="img">
-                      <a
-                        target="_blank"
-                        href={`https://res.cloudinary.com/dkpdbkahw/image/upload/v1616008786/${imageId}.jpg`}
-                      >
-                        <Image
-                          key={index}
-                          cloudName="dkpdbkahw"
-                          publicId={imageId}
-                          width="400"
-                          crop="scale"
-                          className="card-img-top"
-                        ></Image>
-                      </a>
-                      <div className="desc card-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Iure fugiat iusto reprehenderit esse, repellat libero,
-                        cupiditate voluptate laborum explicabo quod saepe, at
-                        architecto. Commodi eveniet voluptatem exercitationem
-                        velit fugiat. Esse.
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-          </CloudinaryContext>
-          <div className="clearfix"></div>
-        </div>
-      </div>
-    </div>
+    <Container fluid>
+      <Jumbotron className="text-center">
+        <h1>Product Listings</h1>
+        <p>Check out all the products listed for sale in your neighborhood</p>
+        <hr />
+
+        <Button
+          variant="primary"
+          onClick={() => {
+            history.push("/upload");
+          }}
+        >
+          List a product
+          <BsPlusCircleFill
+            style={{ marginLeft: "8px", marginBottom: "3px" }}
+          />
+        </Button>
+      </Jumbotron>
+
+      {userData &&
+        userData.map((data, index) => {
+          return (
+            <Card className="mb-3" style={{ maxWidth: "540px" }} key={index}>
+              <div className="row no-gutters">
+                <div className="col-md-4">
+                  <a target="_blank" rel="noreferrer" href={data.imgUrl}>
+                    <Card.Img
+                      src={data.imgUrl}
+                      className="card-img"
+                      alt="product"
+                    />
+                  </a>
+                </div>
+                <div className="col-md-8">
+                  <Card.Body>
+                    <Card.Title style={{ textTransform: "capitalize" }}>
+                      {data.title}
+                    </Card.Title>
+                    <Card.Text>
+                      <strong>Description: </strong>
+                      {data.text}
+                      <br />
+                      <strong>Price:</strong> ${data.price}
+                      <br />
+                      <Card.Text style={{ textTransform: "capitalize" }}>
+                        <strong>Seller:</strong> {data.displayName}
+                      </Card.Text>
+                      <Card.Text style={{ textTransform: "capitalize" }}>
+                        <strong>Category:</strong> {data.category}
+                      </Card.Text>
+                    </Card.Text>
+                    <Card.Text>
+                      <small className="text-muted">
+                        Posted at {data.date}
+                      </small>
+                    </Card.Text>
+
+                    <Button
+                      variant="danger"
+                      size="sm"
+                      id={data._id}
+                      onClick={deleteProduct}
+                      className="mr-1"
+                    >
+                      {" "}
+                      Delete{" "}
+                      <BsTrashFill
+                        style={{ marginLeft: "3px", marginBottom: "3px" }}
+                      />
+                    </Button>
+                    <Button variant="info" size="sm">
+                      View{" "}
+                      <AiFillEye
+                        style={{ marginLeft: "3px", marginBottom: "3px" }}
+                      />{" "}
+                    </Button>
+                  </Card.Body>
+                </div>
+              </div>
+            </Card>
+          );
+        })}
+    </Container>
   );
 };
 
