@@ -85,10 +85,12 @@ This project is licensed under the [**MIT**](https://opensource.org/licenses/MIT
 ## Contributing
 
 This Hey Neighbor App was created by:
-[**Geoffrey Jiang**](https://github.com/geoffreyjiang),
-[**Kayla Muraoka**](https://github.com/kaylamuraoka),
-[**Christian Suchoski**](https://github.com/huski82), and
-[**Jason Richards**](https://github.com/jrkrichards).
+
+| [**Geoffrey Jiang**](https://github.com/geoffreyjiang)                                                                                                                  | [**Kayla Muraoka**](https://github.com/kaylamuraoka)                                                                                                                          | [**Christian Suchoski**](https://github.com/huski82)                                                                                                                     | [**Jason Richards**](https://github.com/jrkrichards)                                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <img src="https://avatars.githubusercontent.com/u/70123826?s=400&u=1f1c91f09949453ac296e1996c9249697be84d52&v=4" width="100" height="100" alt="Github Profile Picture"> | <img src="https://avatars.githubusercontent.com/u/48099435?s=400&u=d6386c0b51a7898d7a3e27613af6446d027a7cf5&v=4=20x20" width="100" height="100" alt="Github Profile Picture"> | <img src="https://avatars.githubusercontent.com/u/69609097?s=400&u=5456e1d3291a5ca883f77bee3840071947afed6a&v=4" width="100" height="100" alt="Github Profile Picture"/> | <img src="https://avatars.githubusercontent.com/u/52109217?s=400&u=2d71407f4a7cff60c647cd6a483b43ecf339a7e6&v=4" width="100" height="100" alt="Github Profile Picture"/> |
+
+Note: All comments and suggestions regarding improvements to this project are welcomed. To contribute to this project, clone this [**project repository**](https://github.com/geoffreyjiang/neighbor_news) locally and commit your code on a separate branch. You may then modify the code to your liking, submit well-formed pull requests and open useful issues. For steps on how to clone a repository using the command line, read this section of the Github Docs [**about cloning a repository**](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository#about-cloning-a-repository).
 
 ## Tests
 
@@ -96,4 +98,24 @@ There are no tests available in this release
 
 ## Questions
 
-Github: https://github.com/geoffreyjiang
+Please use the contact information below if you would like to reach out to us regarding any questions.
+
+Geoffrey Jiang:
+
+- Email: [**geoffreychjiang@gmail.com**](geoffreychjiang@gmail.com)
+- Github Profile: [**@geoffreyjiang**](https://github.com/geoffreyjiang)
+
+Kayla Muraoka:
+
+- Email: [**kmurs98@gmail.com**](kmurs98@gmail.com)
+- Github Profile: [**@kaylamuraoka**](https://github.com/kaylamuraoka)
+
+Jason Richards:
+
+- Email: [**jrkrichards@gmail.com**](jrkrichards@gmail.com)
+- Github Profile: [**@jrkrichards**](https://github.com/jrkrichards)
+
+Christian Suchoski:
+
+- Email: [**christiansuchoski@gmail.com**](christiansuchoski@gmail.com)
+- Github Profile: [**@huski82**](https://github.com/huski82)
