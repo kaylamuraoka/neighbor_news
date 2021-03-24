@@ -23,7 +23,18 @@
 
   <a href="https://dashboard.heroku.com/">
     <img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" alt="Heroku">
-    </a>
+  </a>
+
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="MIT" />
+  </a>
+
+  <img src="https://img.shields.io/github/repo-size/kaylamuraoka/neighbor_news?style=for-the-badge" alt="GitHub repo size"/>
+
+  <img src="https://img.shields.io/github/languages/count/kaylamuraoka/neighbor_news?style=for-the-badge" alt="GitHub language count"/>
+
+  <img src="https://img.shields.io/github/languages/top/kaylamuraoka/neighbor_news?style=for-the-badge" alt="GitHub top language"/>
+
 </p>
 
 ## Description
