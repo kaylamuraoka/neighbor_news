@@ -52,23 +52,58 @@ Hello Neighbor is an online community for the neighborhood where neighbors can p
 
 ## Installation
 
-To install this application locally clone the repository located at the Github profile in the [Questions](#Questions) section. Additionally, you will need to install the following:
+In order to successfully launch this web application, you will need to have the following installed in your local working environment:
 
-1. [**mongodb**](https://www.mongodb.com/)
-2. [**express**](https://expressjs.com/)
-3. [**react**](https://reactjs.org/)
-4. [**node**](https://nodejs.org/en/)
-5. [**mongoose**](https://mongoosejs.com/)
-6. [**bootstrap**](https://getbootstrap.com/)
-7. [**cloudinary**](https://cloudinary.com/documentation/react_integration)
-8. [**bycrptjs**](https://www.npmjs.com/package/bcrypt)
-9. [**axios**](npmjs.com/package/axios)
-10. [**jsonwebtoken**](https://www.npmjs.com/package/jsonwebtoken)
-11. [**dotenv**](https://www.npmjs.com/package/dotenv)
+1. [**Node.js**](https://nodejs.org/en/download/), which is a run-time environment which includes everything you need to execute a program written in JavaScript. If haven't downloaded the [**Node.js**](https://nodejs.org/en/download/) source code or a pre-built installer for your platform, you will need to do so using this [**link**](https://nodejs.org/en/download/).
 
-Once all of these are installed you will be able to use the application from the command line using npm run start:dev.
+2. [**MongoDB**](https://www.mongodb.com/), which is a open-source document-based NoSQL database stores the user's workout information, and is used in the back-end of this application. [**Click here**](https://www.mongodb.com/try/download/community) for installation instructions
+
+To install this application locally carry out the following steps:
+
+1. Clone this [**project repository**](https://github.com/geoffreyjiang/neighbor_news) locally. For steps on how to clone a repository using the command line, read this section of the Github Docs [**about cloning a repository**](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository#about-cloning-a-repository).
+
+2. Navigate to the project directory locally by the command `cd [local repository]`
+
+3. Run the command `npm install`. Note: Make sure to delete the node_modules folder and any 'lock' files such as
+   yarn.lock or package-lock.json before running `npm install` if present.
+
+4. Check package.json file and ensure scripts are notated as below:
+
+```
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production node server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build",
+    "reset": "cd utils && node dbReset.js"
+  }
+```
+
+4. Now run `npm run dev` to run the app in the development mode.
+
+### The NPM dependencies used in this project are:
+
+- [**mongodb**](https://www.mongodb.com/)
+
+- [**express**](https://expressjs.com/): the most widely used Node.js server framework, this allows us to create our own server-side APIs.
+
+- [**react**](https://reactjs.org/)
+
+- [**mongoose**](https://mongoosejs.com/): a MongoDB object-document mapping, or ODM ) library for MongoDB and Node.js.
+
+- [**bootstrap**](https://getbootstrap.com/)
+- [**cloudinary**](https://cloudinary.com/documentation/react_integration)
+- [**bycrptjs**](https://www.npmjs.com/package/bcrypt)
+- [**axios**](npmjs.com/package/axios)
+- [**jsonwebtoken**](https://www.npmjs.com/package/jsonwebtoken)
+- [**dotenv**](https://www.npmjs.com/package/dotenv)
 
 ## Usage
+
+Click this [**link**]() to view the deployed application.
 
 In this current release users are only able to:
 
@@ -85,10 +120,12 @@ This project is licensed under the [**MIT**](https://opensource.org/licenses/MIT
 ## Contributing
 
 This Hey Neighbor App was created by:
-[**Geoffrey Jiang**](https://github.com/geoffreyjiang),
-[**Kayla Muraoka**](https://github.com/kaylamuraoka),
-[**Christian Suchoski**](https://github.com/huski82), and
-[**Jason Richards**](https://github.com/jrkrichards).
+
+| [**Geoffrey Jiang**](https://github.com/geoffreyjiang)                                                                                                                  | [**Kayla Muraoka**](https://github.com/kaylamuraoka)                                                                                                                          | [**Christian Suchoski**](https://github.com/huski82)                                                                                                                     | [**Jason Richards**](https://github.com/jrkrichards)                                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <img src="https://avatars.githubusercontent.com/u/70123826?s=400&u=1f1c91f09949453ac296e1996c9249697be84d52&v=4" width="100" height="100" alt="Github Profile Picture"> | <img src="https://avatars.githubusercontent.com/u/48099435?s=400&u=d6386c0b51a7898d7a3e27613af6446d027a7cf5&v=4=20x20" width="100" height="100" alt="Github Profile Picture"> | <img src="https://avatars.githubusercontent.com/u/69609097?s=400&u=5456e1d3291a5ca883f77bee3840071947afed6a&v=4" width="100" height="100" alt="Github Profile Picture"/> | <img src="https://avatars.githubusercontent.com/u/52109217?s=400&u=2d71407f4a7cff60c647cd6a483b43ecf339a7e6&v=4" width="100" height="100" alt="Github Profile Picture"/> |
+
+Note: All comments and suggestions regarding improvements to this project are welcomed. To contribute to this project, clone this [**project repository**](https://github.com/geoffreyjiang/neighbor_news) locally and commit your code on a separate branch. You may then modify the code to your liking, submit well-formed pull requests and open useful issues. For steps on how to clone a repository using the command line, read this section of the Github Docs [**about cloning a repository**](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository#about-cloning-a-repository).
 
 ## Tests
 
@@ -96,4 +133,24 @@ There are no tests available in this release
 
 ## Questions
 
-Github: https://github.com/geoffreyjiang
+Please use the contact information below if you would like to reach out to us regarding any questions.
+
+Geoffrey Jiang:
+
+- Email: [**geoffreychjiang@gmail.com**](geoffreychjiang@gmail.com)
+- Github Profile: [**@geoffreyjiang**](https://github.com/geoffreyjiang)
+
+Kayla Muraoka:
+
+- Email: [**kmurs98@gmail.com**](kmurs98@gmail.com)
+- Github Profile: [**@kaylamuraoka**](https://github.com/kaylamuraoka)
+
+Jason Richards:
+
+- Email: [**jrkrichards@gmail.com**](jrkrichards@gmail.com)
+- Github Profile: [**@jrkrichards**](https://github.com/jrkrichards)
+
+Christian Suchoski:
+
+- Email: [**christiansuchoski@gmail.com**](christiansuchoski@gmail.com)
+- Github Profile: [**@huski82**](https://github.com/huski82)
