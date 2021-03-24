@@ -30,7 +30,7 @@
     "dev": "concurrently \"nodemon server.js\" \"npm run client\"",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build",
+    "heroku-postbuild": "npm run build",
     "reset": "cd utils && node dbReset.js"
   },
   "repository": {
@@ -44,8 +44,5 @@
   "bugs": {
     "url": "https://github.com/jrkrichards/neighbor_news/issues"
   },
-  "homepage": "https://github.com/jrkrichards/neighbor_news#readme",
-  "engines": {
-    "node": "10.16.0"
-}
+  "homepage": "https://github.com/jrkrichards/neighbor_news#readme"
 }
