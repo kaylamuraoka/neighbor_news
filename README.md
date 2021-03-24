@@ -80,7 +80,7 @@ In this current release users are only able to:
 
 ## License
 
-[![License](https://img.shields.io/static/v1?label=License&message=MIT&color=yellow)](https://choosealicense.com/licenses/mit/)
+This project is licensed under the [**MIT**](https://opensource.org/licenses/MIT) license.
 
 ## Contributing
 
