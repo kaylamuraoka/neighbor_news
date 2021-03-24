@@ -13,6 +13,8 @@ router.post("/register", register);
 
 router.post("/login", login);
 
+router.patch("/:id", updateUser);
+
 router.get("/", auth, getUser);
 
 router.delete("/delete", auth, deleteUser);
