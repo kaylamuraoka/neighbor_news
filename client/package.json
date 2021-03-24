@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://hey-neighbors.herokuapp.com/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
@@ -26,7 +27,11 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
+<<<<<<< HEAD
   },  
+=======
+  },
+>>>>>>> parent of 827159c (back to inital proxy)
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
