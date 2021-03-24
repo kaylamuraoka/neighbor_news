@@ -52,23 +52,58 @@ Hello Neighbor is an online community for the neighborhood where neighbors can p
 
 ## Installation
 
-To install this application locally clone the repository located at the Github profile in the [Questions](#Questions) section. Additionally, you will need to install the following:
+In order to successfully launch this web application, you will need to have the following installed in your local working environment:
 
-1. [**mongodb**](https://www.mongodb.com/)
-2. [**express**](https://expressjs.com/)
-3. [**react**](https://reactjs.org/)
-4. [**node**](https://nodejs.org/en/)
-5. [**mongoose**](https://mongoosejs.com/)
-6. [**bootstrap**](https://getbootstrap.com/)
-7. [**cloudinary**](https://cloudinary.com/documentation/react_integration)
-8. [**bycrptjs**](https://www.npmjs.com/package/bcrypt)
-9. [**axios**](npmjs.com/package/axios)
-10. [**jsonwebtoken**](https://www.npmjs.com/package/jsonwebtoken)
-11. [**dotenv**](https://www.npmjs.com/package/dotenv)
+1. [**Node.js**](https://nodejs.org/en/download/), which is a run-time environment which includes everything you need to execute a program written in JavaScript. If haven't downloaded the [**Node.js**](https://nodejs.org/en/download/) source code or a pre-built installer for your platform, you will need to do so using this [**link**](https://nodejs.org/en/download/).
 
-Once all of these are installed you will be able to use the application from the command line using npm run start:dev.
+2. [**MongoDB**](https://www.mongodb.com/), which is a open-source document-based NoSQL database stores the user's workout information, and is used in the back-end of this application. [**Click here**](https://www.mongodb.com/try/download/community) for installation instructions
+
+To install this application locally carry out the following steps:
+
+1. Clone this [**project repository**](https://github.com/geoffreyjiang/neighbor_news) locally. For steps on how to clone a repository using the command line, read this section of the Github Docs [**about cloning a repository**](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository#about-cloning-a-repository).
+
+2. Navigate to the project directory locally by the command `cd [local repository]`
+
+3. Run the command `npm install`. Note: Make sure to delete the node_modules folder and any 'lock' files such as
+   yarn.lock or package-lock.json before running `npm install` if present.
+
+4. Check package.json file and ensure scripts are notated as below:
+
+```
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production node server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build",
+    "reset": "cd utils && node dbReset.js"
+  }
+```
+
+4. Now run `npm run dev` to run the app in the development mode.
+
+### The NPM dependencies used in this project are:
+
+- [**mongodb**](https://www.mongodb.com/)
+
+- [**express**](https://expressjs.com/): the most widely used Node.js server framework, this allows us to create our own server-side APIs.
+
+- [**react**](https://reactjs.org/)
+
+- [**mongoose**](https://mongoosejs.com/): a MongoDB object-document mapping, or ODM ) library for MongoDB and Node.js.
+
+- [**bootstrap**](https://getbootstrap.com/)
+- [**cloudinary**](https://cloudinary.com/documentation/react_integration)
+- [**bycrptjs**](https://www.npmjs.com/package/bcrypt)
+- [**axios**](npmjs.com/package/axios)
+- [**jsonwebtoken**](https://www.npmjs.com/package/jsonwebtoken)
+- [**dotenv**](https://www.npmjs.com/package/dotenv)
 
 ## Usage
+
+Click this [**link**]() to view the deployed application.
 
 In this current release users are only able to:
 
